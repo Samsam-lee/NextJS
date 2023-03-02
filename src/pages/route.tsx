@@ -1,10 +1,10 @@
 import NavBar from "../../components/NavBar";
 
-export default function Home() {
+export default function temp() {
   return (
     <div>
       <NavBar />
-      Index Page
+      WOW! Easy Routing!!!
     </div>
   );
 }
