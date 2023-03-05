@@ -17,3 +17,9 @@
 
 ### Hydration
 - ReactJS를 FrontEnd 안에서 실행하는 것
+
+### CSS
+- [filename].module.css 패턴
+  - 여러 className 적용 시 백틱으로 띄어쓰기 적용하거나, 배열에 join을 하기도 함
+- style 태그
+  - `<style jsx>{``}</style>` 안에 css 적용

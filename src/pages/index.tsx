@@ -4,7 +4,13 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      Index Page
+      <p>Index Page</p>
+      <style jsx>{`
+        p {
+          color: white;
+          background-color: grey;
+        }
+      `}</style>
     </div>
   );
 }

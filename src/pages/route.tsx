@@ -4,7 +4,7 @@ export default function temp() {
   return (
     <div>
       <NavBar />
-      WOW! Easy Routing!!!
+      <div>WOW! Easy Routing!!!</div>
     </div>
   );
 }
