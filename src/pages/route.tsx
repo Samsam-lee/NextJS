@@ -1,10 +1,7 @@
-import NavBar from "../../components/NavBar";
-
 export default function temp() {
   return (
     <div>
-      <NavBar />
-      <div>WOW! Easy Routing!!!</div>
+      <p>WOW! Easy Routing!!!</p>
     </div>
   );
 }
