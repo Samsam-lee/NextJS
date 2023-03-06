@@ -25,3 +25,6 @@
 ### Global
 - `src > pages > _app.tsx`
   - 라우팅 시, Component를 props로 받아와서 _app 파일을 거쳐서 페이지를 표출
+
+### SEO
+- `import Head from "next/head"` SEO에 사용할 title 부분은 Head를 사용
