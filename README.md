@@ -28,3 +28,8 @@
 
 ### SEO
 - `import Head from "next/head"` SEO에 사용할 title 부분은 Head를 사용
+  - title 태그 내에 여러 노드사용이 지양되어 백틱을 사용해 한 문자열로 통일
+
+### Type
+- `Primitive Type` : string, number ...
+- `Reference Type` : String, Number ... (데이터 타입으로 사용하는 것을 지양)
