@@ -1,9 +1,13 @@
 import Head from "next/head";
 
-export default function Seo({ title }: any) {
+type Title = {
+  title: string;
+}
+
+export default function Seo({ title }: Title) {
   return (
     <Head>
-      <title>{title} | SpoonMe Movies</title>
+      <title>{`${title} | SpoonMe Movies`}</title>
     </Head>
   );
 }
