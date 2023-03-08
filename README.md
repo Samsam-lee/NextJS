@@ -33,3 +33,8 @@
 ### Type
 - `Primitive Type` : string, number ...
 - `Reference Type` : String, Number ... (데이터 타입으로 사용하는 것을 지양)
+
+### Redirects / Rewrites
+- Setting in `next.config.js`
+  - redirects : source로 접속하면 destination으로 접속하면서 redireting한 주소 노출
+  - rewrites : source로 접속하면 destination으로 접속하지만 기존 주소 노출
