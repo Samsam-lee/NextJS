@@ -6,21 +6,17 @@ const API_KEY = process.env.API_KEY;
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [
-      {
-        source: "/myblog/:path*",
-        destination: "/blog/:path*",
-        permanent: false,
-      }
-    ];
+    return [{
+      source: "/myblog/:path*",
+      destination: "/blog/:path*",
+      permanent: false,
+    }];
   },
   async rewrites() {
-    return [
-      {
-        source: "/api/movies",
-        destination: `${DEFAULT_ADDR}movie/popular?api_key=${API_KEY}`,
-      }
-    ];
+    return [{
+      source: "/api/movies",
+      destination: `${DEFAULT_ADDR}movie/popular?api_key=${API_KEY}`,
+    }];
   },
 }
 

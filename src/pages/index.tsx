@@ -1,13 +1,13 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Seo from "../components/Seo";
 
-const IMAGE_URL: string = "https://image.tmdb.org/t/p/w500/";
+const IMAGE_URL: string = "https://image.tmdb.org/t/p/w500";
 
 type Movie = {
   adult : boolean;
   backdrop_path: string;
-  genre_ids: Array<number>;
+  genre_ids: number[];
   id: number;
   original_language: string;
   original_title: string;
@@ -21,24 +21,11 @@ type Movie = {
   vote_count: number;
 };
 
-export default function Home() {
-  const [movies, setMovies] = useState<Array<Movie>>();
-
-  const callApi = async () => {
-    return await axios.get(`/api/movies`);
-  }
-
-  useEffect(() => {
-    callApi().then(({ data }) => {
-      setMovies(data.results);
-      console.log(data.results);
-    });
-  }, []);
-
+export default function Home({ movies }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="container">
       <Seo title="Index" />
-      {!movies ? <div>Loading...</div> : movies.map(movie =>
+      {!movies ? <div>Loading...</div> : movies.map((movie: Movie) =>
       <div className="movie" key={movie.id}>
         <img src={`${IMAGE_URL}${movie.poster_path}`} />
         <h4>{movie.original_title}</h4>
@@ -50,6 +37,9 @@ export default function Home() {
           grid-template-columns: 1fr 1fr;
           padding: 20px;
           gap: 20px;
+        }
+        .movie {
+          cursor: pointer;
         }
         .movie img {
           max-width: 100%;
@@ -67,4 +57,20 @@ export default function Home() {
       `}</style>
     </div>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const empty_data = {} as Movie[];
+  try {
+    const res: AxiosResponse = await axios.get(`http://localhost:3000/api/movies`);
+    if(res.status === 200) {
+      const movies: Movie[] = res.data.results;
+      return { props: { movies }};
+    }
+    return { props: empty_data };
+  }
+  catch(error) {
+    console.log(error);
+    return { props: empty_data };
+  }
 }

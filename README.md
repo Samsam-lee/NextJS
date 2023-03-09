@@ -38,3 +38,6 @@
 - Setting in `next.config.js`
   - redirects : source로 접속하면 destination으로 접속하면서 redireting한 주소 노출
   - rewrites : source로 접속하면 destination으로 접속하지만 기존 주소 노출
+
+### getServerSideProps
+- server에서 실행되는 함수 (Server Side Rendering 사용시)
