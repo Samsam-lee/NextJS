@@ -1,5 +1,11 @@
 # NextJS Practice
 
+### Pre-Rendering
+- ReactJS와 다르게 미리 렌더링하여, HTML 코드를 static 상태로 받와서 표출
+
+### Hydration
+- ReactJS를 FrontEnd 안에서 실행하는 것
+
 ### Routing
 - pages 폴더 안에 파일들로 라우팅
 - `index.tsx` (default)
@@ -8,12 +14,7 @@
 
 ### useRouter
 - route 할 때 사용하는 데이터들 관리 가능
-
-### Pre-Rendering
-- ReactJS와 다르게 미리 렌더링하여, HTML 코드를 static 상태로 받와서 표출
-
-### Hydration
-- ReactJS를 FrontEnd 안에서 실행하는 것
+- `useRouter().push`로 데이터 전달 가능 (파라미터 : pathname, query) (Link에도 똑같이 적용 가능)
 
 ### CSS
 - `[filename].module.css` 패턴

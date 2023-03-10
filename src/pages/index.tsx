@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
+// import { useRouter } from "next/router";
 import Seo from "../components/Seo";
 
 const IMAGE_URL: string = "https://image.tmdb.org/t/p/w500";
@@ -22,14 +24,31 @@ type Movie = {
 };
 
 export default function Home({ movies }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  // const router = useRouter();
+  // const onClick = (id: string) => {
+  //   router.push({
+  //     pathname: `movies/${id}`,
+  //     query: {
+  //       title: "temp",
+  //     },
+  //   }, `movies/${id}`)
+  // }
+
   return (
     <div className="container">
       <Seo title="Index" />
       {!movies ? <div>Loading...</div> : movies.map((movie: Movie) =>
-      <div className="movie" key={movie.id}>
-        <img src={`${IMAGE_URL}${movie.poster_path}`} />
-        <h4>{movie.original_title}</h4>
-      </div>)}
+      <Link key={movie.id} as={`movies/${movie.id}`} href={{
+        pathname: `movies/${movie.id}`,
+        query: {
+          title: movie.original_title,
+        }
+      }}>
+        <div className="movie">
+          <img src={`${IMAGE_URL}${movie.poster_path}`} />
+          <h4>{movie.original_title}</h4>
+        </div>
+      </Link>)}
 
       <style jsx>{`
         .container {
