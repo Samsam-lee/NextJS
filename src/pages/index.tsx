@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Image from "next/image";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 import Seo from "../components/Seo";
@@ -38,14 +39,10 @@ export default function Home({ movies }: InferGetServerSidePropsType<typeof getS
     <div className="container">
       <Seo title="Index" />
       {!movies ? <div>Loading...</div> : movies.map((movie: Movie) =>
-      <Link key={movie.id} as={`movies/${movie.id}`} href={{
-        pathname: `movies/${movie.id}`,
-        query: {
-          title: movie.original_title,
-        }
-      }}>
+      <Link key={movie.id} href={`movies/${movie.original_title}/${movie.id}`}>
         <div className="movie">
-          <img src={`${IMAGE_URL}${movie.poster_path}`} />
+          {/* <Image src={`${IMAGE_URL}${movie.poster_path}`} alt={`${movie.title}`} width={`100`} height={`100`} /> */}
+          <img src={`${IMAGE_URL}${movie.poster_path}`} alt={`${movie.title}`} />
           <h4>{movie.original_title}</h4>
         </div>
       </Link>)}
